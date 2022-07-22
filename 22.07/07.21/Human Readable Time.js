@@ -23,5 +23,9 @@ function humanReadable(seconds) {
   let min = parseInt((seconds % 3600) / 60);
   let sec = seconds % 60;
 
-  return `${hour < 10 ? "0" + hour : hour}:${min < 10 ? "0" + min : min}:${sec < 10 ? "0" + sec : sec}`;
+  const underTen = (value) => {
+    return value < 10 ? "0" + value : value;
+  };
+
+  return underTen(hour) + ":" + underTen(min) + ":" + underTen(sec);
 }
