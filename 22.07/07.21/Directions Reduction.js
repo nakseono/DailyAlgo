@@ -49,28 +49,16 @@
 function dirReduc(arr) {
   let result = [];
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === "NORTH") {
-      result[result.length - 1] === "SOUTH"
-        ? result.pop()
-        : result.push("NORTH");
-    }
-    if (arr[i] === "SOUTH") {
-      result[result.length - 1] === "NORTH"
-        ? result.pop()
-        : result.push("SOUTH");
-    }
-    if (arr[i] === "EAST") {
-      result[result.length - 1] === "WEST"
-        ? result.pop()
-        : result.push("EAST");
-    }
-    if (arr[i] === "WEST") {
-      result[result.length - 1] === "EAST"
-        ? result.pop()
-        : result.push("WEST");
-    }
+  let oppsite = {
+    "NORTH" : "SOUTH",
+    "SOUTH" : "NORTH",
+    "EAST" : "WEST",
+    "WEST" : "EAST"
   }
+
+  arr.forEach((el) => {
+    result[result.length-1] === oppsite[el] ? result.pop() : result.push(el);
+  })
 
   return result;
 }
